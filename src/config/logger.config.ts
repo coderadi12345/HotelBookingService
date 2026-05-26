@@ -26,7 +26,7 @@ const logger = winston.createLogger({
             maxSize: "20m", // The maximum size of the log file
             maxFiles: "14d", // The maximum number of log files to keep
         })
-        // TODO: add logic to integrate and save logs in mongo
+ 
     ]
 });
 

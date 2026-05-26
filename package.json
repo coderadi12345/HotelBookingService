@@ -12,7 +12,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^7.8.0",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.6.1",
     "express": "^5.1.0",
     "prisma": "^7.8.0",
     "uuid": "^11.1.0",
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
-    "@types/node": "^22.14.0",
+    "@types/node": "^22.19.19",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
