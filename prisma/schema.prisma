@@ -1,21 +1,32 @@
-
 generator client {
-  provider = "prisma-client"
- 
+  provider = "prisma-client-js"
 }
+
 datasource db {
   provider = "mysql"
 }
 
 model Booking {
-  id             Int            @id @default(autoincrement())
-  userId         Int
-  hotelId        Int
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
-  bookingAmount  Int
-  status         BookingStatus
-  totalBooking   Int
+  id            Int           @id @default(autoincrement())
+  userId        Int
+  hotelId       Int
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  bookingAmount Int
+  status        BookingStatus
+  totalBooking  Int
+  IdempotencyKeyId    Int        @unique
+  IdempotencyKey      IdempotencyKey? @relation(fields: [IdempotencyKeyId],references:[id])
+
+
+}
+
+model IdempotencyKey {
+   id            Int           @id @default(autoincrement())
+   key           String       @unique
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  booking        Booking?
 }
 
 enum BookingStatus {
