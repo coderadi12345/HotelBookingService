@@ -1,8 +1,7 @@
-import {Prisma } from "@prisma/client";
-import prismaClient from '../config/client'
+import { Prisma } from "@prisma/client";import prismaClient from '../config/client'
 
 export async function createBooking(
-  bookingInput: Prisma.BookingCreateInput 
+  bookingInput: Prisma.bookingCreateInput 
 ) {
   const booking = await prismaClient.booking.create({
     data: bookingInput,
@@ -13,9 +12,10 @@ export async function createBooking(
 
 export async function createIdempotencyKey(key: string , bookingId: number){
 
-  const idempotencyKey = await prismaClient.idempotencyKey.create({
+  const idempotencyKey = await prismaClient.idempotencykey.create({
     data: {
       key,
+      updatedAt: new Date(),
       booking :{
         connect:{
           id: bookingId
@@ -27,7 +27,7 @@ export async function createIdempotencyKey(key: string , bookingId: number){
 }
 
 export async function getIdempotencyKey(key:string){
-  const idempotency = await prismaClient.idempotencyKey.findUnique({
+  const idempotency = await prismaClient.idempotencykey.findUnique({
 
          where :{
           key
@@ -75,7 +75,7 @@ export async function cancelBooking(bookingId: number){
 }
 
 export async function finalizeIdempotencyKey(key: string){
-  const idempotency = await prismaClient.idempotencyKey.update({
+  const idempotency = await prismaClient.idempotencykey.update({
 
     where:{
       key

@@ -7,4 +7,3 @@
 -- AlterTable
 ALTER TABLE `booking` ADD COLUMN `totalBooking` INTEGER NOT NULL;
 
-
