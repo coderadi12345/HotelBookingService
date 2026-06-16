@@ -4,7 +4,6 @@ import { createBookingService, finalizeBookingService } from "../service/booking
 export async function createBookingHandler(req: Request,res:Response,next:NextFunction){
 
     const booking = await createBookingService(req.body)
-    
 
     res.status(201).json({
         bookingId: booking.bookingId,

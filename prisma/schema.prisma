@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-    url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model booking {
@@ -21,9 +21,9 @@ model booking {
 
 model idempotencykey {
   id        Int      @id @default(autoincrement())
-  key       String   @unique(map: "IdempotencyKey_key_key")
+  Idemkey   String   @unique(map: "IdempotencyKey_key_key")
   createdAt DateTime @default(now())
-  updatedAt DateTime  @updatedAt
+  updatedAt DateTime @updatedAt
   bookingId Int      @unique(map: "IdempotencyKey_bookingId_key")
   finalized Boolean  @default(false)
   booking   booking  @relation(fields: [bookingId], references: [id], map: "IdempotencyKey_bookingId_fkey")
